@@ -1,4 +1,4 @@
-namespace ReactUserCreatedGuides.Server
+namespace ReactUserCreatedGuides.Server.Objects
 {
     public class WeatherForecast
     {

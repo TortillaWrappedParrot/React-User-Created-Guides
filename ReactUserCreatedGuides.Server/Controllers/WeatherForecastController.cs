@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ReactUserCreatedGuides.Server.Objects;
 
 namespace ReactUserCreatedGuides.Server.Controllers
 {

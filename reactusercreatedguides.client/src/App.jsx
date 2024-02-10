@@ -44,7 +44,7 @@ function App() {
     );
     
     async function populateGuideData() {
-        const response = await fetch('weatherforecast');
+        const response = await fetch('Guide');
         const data = await response.json();
         setGuides(data);
     }

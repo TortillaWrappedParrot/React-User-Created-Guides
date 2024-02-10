@@ -44,7 +44,7 @@ function App() {
     );
     
     async function populateGuideData() {
-        const response = await fetch('Guide');
+        const response = await fetch('guide');
         const data = await response.json();
         setGuides(data);
     }

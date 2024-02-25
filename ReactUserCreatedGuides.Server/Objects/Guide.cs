@@ -26,15 +26,5 @@
         /// The full guide that will be displayed when the guide is opened
         /// </summary>
         public string DetailedGuide { get; set;}
-
-        public Guide()
-        {
-            //Initilaize variables
-            Author = string.Empty;
-            ProgrammingLanguage = string.Empty;
-            Language = string.Empty;
-            BriefSummary = string.Empty;
-            DetailedGuide = string.Empty;
-        }
     }
 }

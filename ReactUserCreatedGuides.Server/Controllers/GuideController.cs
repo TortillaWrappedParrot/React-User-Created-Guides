@@ -45,6 +45,7 @@ namespace ReactUserCreatedGuides.Server.Controllers
         [HttpGet(Name = "GetGuide")]
         public IEnumerable<Guide> Get()
         {
+            
             return Enumerable.Range(1, 5).Select(index => new Guide
             {
                 Author = AuthorNames[Random.Shared.Next(AuthorNames.Length)],

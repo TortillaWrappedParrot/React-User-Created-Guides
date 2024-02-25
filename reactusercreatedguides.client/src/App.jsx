@@ -9,7 +9,9 @@ function App() {
     }, []);
 
     const contents = guides === undefined
+        //If guides is undefined show a loading message
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
+        //Else display main page content
         : <table className="table table-striped" aria-labelledby="tabelLabel">
             <thead>
                 <tr>
@@ -23,6 +25,7 @@ function App() {
             </thead>
             <tbody>
                 {guides.map(guide =>
+                    //Map each part of the guide to a section
                     <tr key={guide.id}>
                         <td>{guide.id}</td>
                         <td>{guide.author}</td>
@@ -35,16 +38,18 @@ function App() {
             </tbody>
         </table>;
 
+    //Returned page content
     return (
         <div>
             <h1 id="tabelLabel">User Created Guides</h1>
-            <p>This component demonstrates fetching data from the server.</p>
             {contents}
         </div>
     );
     
     async function populateGuideData() {
+        //Get Guides from controller
         const response = await fetch('guide');
+        //Convert it to json
         const data = await response.json();
         setGuides(data);
     }

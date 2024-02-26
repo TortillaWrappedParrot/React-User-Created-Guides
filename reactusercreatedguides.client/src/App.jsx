@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+    //guides is the current state, or what the website displays starting off
+    //setGuides is the update function in this case the setGuides function which is updated from the useEffect below
     const [guides, setGuides] = useState();
 
+    //Fetches data from the server using the provided function
     useEffect(() => {
         populateGuideData();
-    }, []);
+    }, []); //[] makes sure it only fetches once the site is refreshed
 
     const contents = guides === undefined
         //If guides is undefined show a loading message
@@ -45,12 +48,14 @@ function App() {
             {contents}
         </div>
     );
-    
+
+    //Function for fetching guide data
     async function populateGuideData() {
         //Get Guides from controller
         const response = await fetch('guide');
         //Convert it to json
         const data = await response.json();
+        //Call the update state function
         setGuides(data);
     }
 }

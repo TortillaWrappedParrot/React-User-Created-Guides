@@ -15,9 +15,9 @@ function App() {
         //If guides is undefined show a loading message
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
         //Else display main page content
-        :<table className="table table-striped" aria-labelledby="tabelLabel">
+        : <table className="bg-transparent text-dark table table-striped" aria-labelledby="tabelLabel">
                 <thead>
-                    <tr>
+                <tr>
                         <th>ID</th>
                         <th>Author</th>
                         <th>Programming Language</th>
@@ -44,7 +44,7 @@ function App() {
     //Returned page content
     return (
         <div>
-            <h1 id="tabelLabel">User Created Guides</h1>
+            <h1 id="tabelLabel" className="text-white">User Created Guides</h1>
             <div>
                 <button>Add Guide</button>
                 <input type="text" placeholder="Search.."></input>

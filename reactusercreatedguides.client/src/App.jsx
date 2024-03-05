@@ -15,36 +15,41 @@ function App() {
         //If guides is undefined show a loading message
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
         //Else display main page content
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Author</th>
-                    <th>Programming Language</th>
-                    <th>Language</th>
-                    <th>Brief Summary</th>
-                    <th>Detailed Guide</th>
-                </tr>
-            </thead>
-            <tbody>
-                {guides.map(guide =>
-                    //Map each part of the guide to a section
-                    <tr key={guide.id}>
-                        <td>{guide.id}</td>
-                        <td>{guide.author}</td>
-                        <td>{guide.programmingLanguage}</td>
-                        <td>{guide.language}</td>
-                        <td>{guide.briefSummary}</td>
-                        <td>{guide.detailedGuide}</td>
+        :<table className="table table-striped" aria-labelledby="tabelLabel">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Author</th>
+                        <th>Programming Language</th>
+                        <th>Language</th>
+                        <th>Brief Summary</th>
+                        <th>Detailed Guide</th>
                     </tr>
-                )}
-            </tbody>
-        </table>;
+                </thead>
+                <tbody>
+                    {guides.map(guide =>
+                        //Map each part of the guide to a section
+                        <tr key={guide.id}>
+                            <td>{guide.id}</td>
+                            <td>{guide.author}</td>
+                            <td>{guide.programmingLanguage}</td>
+                            <td>{guide.language}</td>
+                            <td>{guide.briefSummary}</td>
+                            <td>{guide.detailedGuide}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>;
 
     //Returned page content
     return (
         <div>
             <h1 id="tabelLabel">User Created Guides</h1>
+            <div>
+                <button>Add Guide</button>
+                <input type="text" placeholder="Search.."></input>
+                <button>Filters</button>
+            </div>
             {contents}
         </div>
     );

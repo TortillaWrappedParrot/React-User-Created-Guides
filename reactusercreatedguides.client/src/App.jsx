@@ -50,7 +50,7 @@ function App() {
                 <input type="text" placeholder="Search.."></input>
                 <button>Filters</button>
             </div>
-            <div>
+            <div className="visually-hidden">
                 <form className="text-white">
                     <label htmlFor="authorName">Author Name</label>
                     <br></br>
@@ -74,6 +74,24 @@ function App() {
                     <br></br>
                     <br></br>
                     <input type="submit" value="Submit"></input>
+                </form>
+            </div>
+            <div className="visually-hidden">
+                <form className="text-white">
+                    <label htmlFor="authorName">Author Name</label>
+                    <br></br>
+                    <input type="text" id="authorName" name="authorName"></input>
+                    <br></br>
+                    <label htmlFor="programmingLanguage">Programming Language</label>
+                    <br></br>
+                    <input type="text" id="programmingLanguage" name="programmingLanguage"></input>
+                    <br></br>
+                    <label htmlFor="language">Language</label>
+                    <br></br>
+                    <input type="text" id="language" name="language"></input>
+                    <br></br>
+                    <br></br>
+                    <input type="submit" value="Search"></input>
                 </form>
             </div>
             {contents}

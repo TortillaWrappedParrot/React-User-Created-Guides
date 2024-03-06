@@ -50,6 +50,32 @@ function App() {
                 <input type="text" placeholder="Search.."></input>
                 <button>Filters</button>
             </div>
+            <div>
+                <form className="text-white">
+                    <label htmlFor="authorName">Author Name</label>
+                    <br></br>
+                    <input type="text" id="authorName" name="authorName"></input>
+                    <br></br>
+                    <label htmlFor="programmingLanguage">Programming Language</label>
+                    <br></br>
+                    <input type="text" id="programmingLanguage" name="programmingLanguage"></input>
+                    <br></br>
+                    <label htmlFor="language">Language</label>
+                    <br></br>
+                    <input type="text" id="language" name="language"></input>
+                    <br></br>
+                    <label htmlFor="briefSummary">Brief Sumary</label>
+                    <br></br>
+                    <textarea id="briefSummary" cols="40" rows="5" name="briefSummary"></textarea>
+                    <br></br>
+                    <label htmlFor="DetailedGuide">Detailed Guide</label>
+                    <br></br>
+                    <textarea id="DetailedGuide" cols="40" rows="5" name="DetailedGuide"></textarea>
+                    <br></br>
+                    <br></br>
+                    <input type="submit" value="Submit"></input>
+                </form>
+            </div>
             {contents}
         </div>
     );

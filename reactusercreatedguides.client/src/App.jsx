@@ -45,12 +45,14 @@ function App() {
     return (
         <div>
             <h1 id="tabelLabel" className="text-white">User Created Guides</h1>
+            {/*Buttons and Search Bar*/}
             <div>
-                <button>Add Guide</button>
+                <button data-bs-toggle="collapse" data-bs-target="#addGuide">Add Guide</button>
                 <input type="text" placeholder="Search.."></input>
-                <button>Filters</button>
+                <button data-bs-toggle="collapse" data-bs-target="#searchFilter">Filters</button>
             </div>
-            <div className="visually-hidden">
+            {/*Add guide div*/}
+            <div className="collapse" id="addGuide">
                 <form className="text-white">
                     <label htmlFor="authorName">Author Name</label>
                     <br></br>
@@ -76,7 +78,8 @@ function App() {
                     <input type="submit" value="Submit"></input>
                 </form>
             </div>
-            <div className="visually-hidden">
+            {/*Search filter div*/}
+            <div className="collapse" id="searchFilter">
                 <form className="text-white">
                     <label htmlFor="authorName">Author Name</label>
                     <br></br>

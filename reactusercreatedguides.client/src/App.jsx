@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 async function PostGuide(e) {
+    //Prevent reloading on submit
     e.preventDefault();
+    //Form object from FormData
     const formData = Object.fromEntries(new FormData(e.target).entries());
 
+    //Create post request
     await fetch('guide', {
         method: 'POST',
         headers: {

@@ -61,5 +61,16 @@ namespace ReactUserCreatedGuides.Server.Controllers
 
             return _context.Guides.ToArray();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Author,ProgrammingLanguage,Language,BriefSummary,DetailedGuide")] Guide newGuide)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(newGuide);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -1,10 +1,13 @@
-﻿namespace ReactUserCreatedGuides.Server.Objects
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ReactUserCreatedGuides.Server.Objects
 {
     public class Guide
     {
         /// <summary>
         /// Internal Id for database
         /// </summary>
+        [Key]
         public int Id { get; set; }
         /// <summary>
         /// The name or desired name of the person who created the guide

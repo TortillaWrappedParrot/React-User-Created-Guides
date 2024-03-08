@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ReactUserCreatedGuides.Server.Data;
 using ReactUserCreatedGuides.Server.Objects;
 
 namespace ReactUserCreatedGuides.Server.Controllers
@@ -35,26 +37,29 @@ namespace ReactUserCreatedGuides.Server.Controllers
             "Mattis nunc sed blandit libero volutpat sed. Ultricies integer quis auctor elit sed vulputate mi. Proin fermentum leo vel orci porta non. Faucibus et molestie ac feugiat sed. Tellus rutrum tellus pellentesque eu tincidunt. Vitae et leo duis ut diam quam nulla porttitor. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Tempus quam pellentesque nec nam aliquam sem et tortor consequat. Ut enim blandit volutpat maecenas. Magna eget est lorem ipsum dolor sit amet consectetur. Ipsum dolor sit amet consectetur adipiscing elit ut aliquam."
         };
 
+        private readonly GuideContext _context;
         private readonly ILogger<GuideController> _logger;
 
-        public GuideController(ILogger<GuideController> logger)
+        public GuideController(GuideContext context, ILogger<GuideController> logger)
         {
+            _context = context;
             _logger = logger;
         }
 
         [HttpGet(Name = "GetGuide")]
         public IEnumerable<Guide> Get()
         {
-            
-            return Enumerable.Range(1, 5).Select(index => new Guide
-            {
-                Author = AuthorNames[Random.Shared.Next(AuthorNames.Length)],
-                ProgrammingLanguage = ProgrammingLanguages[Random.Shared.Next(ProgrammingLanguages.Length)],
-                Language = Languages[Random.Shared.Next(Languages.Length)],
-                BriefSummary = BriefSummaries[Random.Shared.Next(BriefSummaries.Length)],
-                DetailedGuide = DetailedGuides[Random.Shared.Next(DetailedGuides.Length)]
-            })
-            .ToArray();
+            //return Enumerable.Range(1, 5).Select(index => new Guide
+            //{
+            //    Author = AuthorNames[Random.Shared.Next(AuthorNames.Length)],
+            //    ProgrammingLanguage = ProgrammingLanguages[Random.Shared.Next(ProgrammingLanguages.Length)],
+            //    Language = Languages[Random.Shared.Next(Languages.Length)],
+            //    BriefSummary = BriefSummaries[Random.Shared.Next(BriefSummaries.Length)],
+            //    DetailedGuide = DetailedGuides[Random.Shared.Next(DetailedGuides.Length)]
+            //})
+            //.ToArray();
+
+            return _context.Guides.ToArray();
         }
     }
 }

@@ -11,7 +11,7 @@ using ReactUserCreatedGuides.Server.Data;
 namespace ReactUserCreatedGuides.Server.Migrations
 {
     [DbContext(typeof(GuideContext))]
-    [Migration("20240308013755_Initial")]
+    [Migration("20240308003448_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

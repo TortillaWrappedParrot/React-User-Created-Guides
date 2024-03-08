@@ -1,6 +1,26 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
+async function PostGuide(e) {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+
+    await fetch('guide', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: 0,
+            author: formData['authorName'],
+            programmingLanguage: formData['programmingLanguage'],
+            language: formData['language'],
+            briefSummary: formData['briefSummary'],
+            detailedGuide: formData['detailedGuide']
+        })
+    });
+}
+
 function App() {
     //guides is the current state, or what the website displays starting off
     //setGuides is the update function in this case the setGuides function which is updated from the useEffect below
@@ -53,7 +73,7 @@ function App() {
             </div>
             {/*Add guide div*/}
             <div className="collapse" id="addGuide">
-                <form className="text-white">
+                <form className="text-white" id="addGuideForm" onSubmit={PostGuide}>
                     <label htmlFor="authorName">Author Name</label>
                     <br></br>
                     <input type="text" id="authorName" name="authorName"></input>
@@ -70,12 +90,12 @@ function App() {
                     <br></br>
                     <textarea id="briefSummary" cols="40" rows="5" name="briefSummary"></textarea>
                     <br></br>
-                    <label htmlFor="DetailedGuide">Detailed Guide</label>
+                    <label htmlFor="detailedGuide">Detailed Guide</label>
                     <br></br>
-                    <textarea id="DetailedGuide" cols="40" rows="5" name="DetailedGuide"></textarea>
+                    <textarea id="detailedGuide" cols="40" rows="5" name="detailedGuide"></textarea>
                     <br></br>
                     <br></br>
-                    <input type="submit" value="Submit"></input>
+                    <input type="submit"></input>
                 </form>
             </div>
             {/*Search filter div*/}

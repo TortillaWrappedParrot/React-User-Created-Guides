@@ -1,11 +1,35 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
-async function PostGuide(e) {
+//Filter function for filtering all rows
+function FilterTable(event) {
     //Prevent reloading on submit
-    e.preventDefault();
+    event.preventDefault();
+
     //Form object from FormData
-    const formData = Object.fromEntries(new FormData(e.target).entries());
+    const formData = Object.fromEntries(new FormData(event.target).entries());
+
+    const tableRows = document.getElementsByTagName("tr"); //Get all table rows in the document
+    
+    for (let i = 1; i < tableRows.length; i++) {
+        tableRows[i].style.display = tableRows[i].getElementsByTagName("td")[0].textContent.indexOf(formData['authorName']) > -1 ? "" : "none"; //Check author field
+
+        if (tableRows[i].style.display != "none") { //Check if its been disabled by failing previous check
+            tableRows[i].style.display = tableRows[i].getElementsByTagName("td")[1].textContent.indexOf(formData['programmingLanguage']) > -1 ? "" : "none"; //Check programming language field
+        }
+
+        if (tableRows[i].style.display != "none") { //Check if its been disabled by failing previous check
+            tableRows[i].style.display = tableRows[i].getElementsByTagName("td")[2].textContent.indexOf(formData['language']) > -1 ? "" : "none"; //Check language field
+        }
+    }
+}
+//Post function for adding to database
+async function PostGuide(event) {
+    //Prevent reloading on submit
+    event.preventDefault();
+
+    //Form object from FormData
+    const formData = Object.fromEntries(new FormData(event.target).entries());
 
     //Create post request
     await fetch('guide', {
@@ -40,8 +64,7 @@ function App() {
         //Else display main page content
         : <table className="bg-transparent text-dark table table-striped" aria-labelledby="tabelLabel">
                 <thead>
-                <tr>
-                        <th>ID</th>
+                    <tr>
                         <th>Author</th>
                         <th>Programming Language</th>
                         <th>Language</th>
@@ -53,7 +76,6 @@ function App() {
                     {guides.map(guide =>
                         //Map each part of the guide to a section
                         <tr key={guide.id}>
-                            <td>{guide.id}</td>
                             <td>{guide.author}</td>
                             <td>{guide.programmingLanguage}</td>
                             <td>{guide.language}</td>
@@ -71,7 +93,6 @@ function App() {
             {/*Buttons and Search Bar*/}
             <div>
                 <button data-bs-toggle="collapse" data-bs-target="#addGuide">Add Guide</button>
-                <input type="text" placeholder="Search.."></input>
                 <button data-bs-toggle="collapse" data-bs-target="#searchFilter">Filters</button>
             </div>
             {/*Add guide div*/}
@@ -103,7 +124,7 @@ function App() {
             </div>
             {/*Search filter div*/}
             <div className="collapse" id="searchFilter">
-                <form className="text-white">
+                <form className="text-white" id="searchFilterForm" onSubmit={FilterTable}>
                     <label htmlFor="authorName">Author Name</label>
                     <br></br>
                     <input type="text" id="authorName" name="authorName"></input>
@@ -117,7 +138,7 @@ function App() {
                     <input type="text" id="language" name="language"></input>
                     <br></br>
                     <br></br>
-                    <input type="submit" value="Search"></input>
+                    <input type="submit"></input>
                 </form>
             </div>
             {contents}

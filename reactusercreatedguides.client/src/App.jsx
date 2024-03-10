@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
+function $(id) {
+    return document.getElementById(id);
+}
+
 //Filter function for filtering all rows
 function FilterTable(event) {
     //Prevent reloading on submit
@@ -48,6 +52,18 @@ async function PostGuide(event) {
     });
 }
 
+function DisplayGuide(detailedGuide) {
+    let targetElement = $("guideDisplay");
+    let targetText = $("guideText");
+
+    if (targetElement != null) {
+        targetElement.className = "collapse show bg-white";
+        targetText.textContent = detailedGuide;
+
+        window.scrollTo(0, 0);
+    }
+}
+
 function App() {
     //guides is the current state, or what the website displays starting off
     //setGuides is the update function in this case the setGuides function which is updated from the useEffect below
@@ -72,15 +88,13 @@ function App() {
                 <tbody>
                     {guides.map(guide =>
                         //Map each part of the guide to a section
-                        <>
-                            <tr key={guide.id}>
-                                <td>{guide.author} <br></br>
-                                    {guide.programmingLanguage} <br></br>
-                                    {guide.language}</td>
-                                <td>{guide.briefSummary}</td>
-                                <td className="collapse">{guide.detailedGuide}</td>
-                            </tr>
-                        </>
+                        <tr key={guide.id}>
+                            <td>{guide.author} <br></br>
+                                {guide.programmingLanguage} <br></br>
+                                {guide.language}</td>
+                            <td>{guide.briefSummary} <br></br>
+                                <button onClick={function () { DisplayGuide(guide.detailedGuide) }}>Show Full Guide</button> </td>
+                        </tr>
                     )}
                 </tbody>
             </table>;
@@ -89,11 +103,22 @@ function App() {
     return (
         <div>
             <h1 id="tabelLabel" className="text-white">User Created Guides</h1>
+            <br></br>
+
             {/*Buttons and Search Bar*/}
             <div>
                 <button data-bs-toggle="collapse" data-bs-target="#addGuide">Add Guide</button>
                 <button data-bs-toggle="collapse" data-bs-target="#searchFilter">Filters</button>
             </div>
+            <br></br>
+
+            {/*Display detailed guide div*/}
+            <div className="collapse bg-white" id="guideDisplay">
+                <button data-bs-toggle="collapse" data-bs-target="#guideDisplay">Close Guide</button>
+                <p id="guideText">Place Holder</p>
+            </div>
+            <br></br>
+
             {/*Add guide div*/}
             <div className="collapse" id="addGuide">
                 <form className="text-white" id="addGuideForm" onSubmit={PostGuide}>
@@ -121,6 +146,8 @@ function App() {
                     <input type="submit"></input>
                 </form>
             </div>
+            <br></br>
+
             {/*Search filter div*/}
             <div className="collapse" id="searchFilter">
                 <form className="text-white" id="searchFilterForm" onSubmit={FilterTable}>

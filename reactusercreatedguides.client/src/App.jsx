@@ -65,23 +65,22 @@ function App() {
         : <table className="bg-transparent text-dark table table-striped" aria-labelledby="tabelLabel">
                 <thead>
                     <tr>
-                        <th>Author</th>
-                        <th>Programming Language</th>
-                        <th>Language</th>
+                        <th>Information</th>
                         <th>Brief Summary</th>
-                        <th>Detailed Guide</th>
                     </tr>
                 </thead>
                 <tbody>
                     {guides.map(guide =>
                         //Map each part of the guide to a section
-                        <tr key={guide.id}>
-                            <td>{guide.author}</td>
-                            <td>{guide.programmingLanguage}</td>
-                            <td>{guide.language}</td>
-                            <td>{guide.briefSummary}</td>
-                            <td>{guide.detailedGuide}</td>
-                        </tr>
+                        <>
+                            <tr key={guide.id}>
+                                <td>{guide.author} <br></br>
+                                    {guide.programmingLanguage} <br></br>
+                                    {guide.language}</td>
+                                <td>{guide.briefSummary}</td>
+                                <td className="collapse">{guide.detailedGuide}</td>
+                            </tr>
+                        </>
                     )}
                 </tbody>
             </table>;

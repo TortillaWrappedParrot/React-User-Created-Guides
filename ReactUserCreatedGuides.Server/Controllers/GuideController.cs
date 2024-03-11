@@ -47,7 +47,7 @@ namespace ReactUserCreatedGuides.Server.Controllers
         }
 
         [HttpGet(Name = "GetGuide")]
-        public IEnumerable<Guide> Get()
+        public async Task<IEnumerable<Guide>> GetAsync()
         {
             //return Enumerable.Range(1, 5).Select(index => new Guide
             //{
@@ -59,7 +59,7 @@ namespace ReactUserCreatedGuides.Server.Controllers
             //})
             //.ToArray();
 
-            return _context.Guides.ToArray();
+            return await _context.Guides.ToArrayAsync();
         }
 
         [HttpPost]

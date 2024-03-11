@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReactUserCreatedGuides.Server.Data;
 using ReactUserCreatedGuides.Server.Objects;
+using System.Linq;
 
 namespace ReactUserCreatedGuides.Server.Controllers
 {
@@ -49,16 +50,13 @@ namespace ReactUserCreatedGuides.Server.Controllers
         [HttpGet(Name = "GetGuide")]
         public async Task<IEnumerable<Guide>> GetAsync()
         {
-            //return Enumerable.Range(1, 5).Select(index => new Guide
+            //Clear database
+            //List<Guide> guides = _context.Guides.ToList();
+            //for (var i = 0; i < guides.Count; i++)
             //{
-            //    Author = AuthorNames[Random.Shared.Next(AuthorNames.Length)],
-            //    ProgrammingLanguage = ProgrammingLanguages[Random.Shared.Next(ProgrammingLanguages.Length)],
-            //    Language = Languages[Random.Shared.Next(Languages.Length)],
-            //    BriefSummary = BriefSummaries[Random.Shared.Next(BriefSummaries.Length)],
-            //    DetailedGuide = DetailedGuides[Random.Shared.Next(DetailedGuides.Length)]
-            //})
-            //.ToArray();
-
+            //    _context.Guides.Remove(guides[i]);
+            //}
+            //_context.SaveChanges();
             return await _context.Guides.ToArrayAsync();
         }
 

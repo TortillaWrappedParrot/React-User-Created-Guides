@@ -84,9 +84,9 @@ function App() {
                     {guides.map(guide =>
                         //Map each part of the guide to a section
                         <tr key={guide.id}>
-                            <td>{guide.author} <br></br>
-                                {guide.programmingLanguage} <br></br>
-                                {guide.language}</td>
+                            <td>Author: {guide.author} <br></br>
+                                Programming Language: {guide.programmingLanguage} <br></br>
+                                Language: {guide.language}</td>
                             <td>{guide.briefSummary} <br></br>
                                 <button onClick={function () { DisplayGuide(guide.detailedGuide) }}>Show Full Guide</button> </td>
                         </tr>

@@ -15,15 +15,16 @@ function FilterTable(event) {
 
     const tableRows = document.getElementsByTagName("tr"); //Get all table rows in the document
     
-    for (let i = 1; i < tableRows.length; i++) {
-        tableRows[i].style.display = tableRows[i].getElementsByTagName("td")[0].textContent.indexOf(formData['authorName']) > -1 ? "" : "none"; //Check author field
+    for (let i = 0; i < tableRows.length; i++) {
+        let targetRow = tableRows[i].getElementsByTagName("td")[0];
+        tableRows[i].style.display = targetRow.textContent.indexOf(formData['authorName']) > -1 ? "" : "none"; //Check author field
 
         if (tableRows[i].style.display != "none") { //Check if its been disabled by failing previous check
-            tableRows[i].style.display = tableRows[i].getElementsByTagName("td")[1].textContent.indexOf(formData['programmingLanguage']) > -1 ? "" : "none"; //Check programming language field
+            tableRows[i].style.display = targetRow.textContent.indexOf(formData['programmingLanguage']) > -1 ? "" : "none"; //Check programming language field
         }
 
         if (tableRows[i].style.display != "none") { //Check if its been disabled by failing previous check
-            tableRows[i].style.display = tableRows[i].getElementsByTagName("td")[2].textContent.indexOf(formData['language']) > -1 ? "" : "none"; //Check language field
+            tableRows[i].style.display = targetRow.textContent.indexOf(formData['language']) > -1 ? "" : "none"; //Check language field
         }
     }
 }

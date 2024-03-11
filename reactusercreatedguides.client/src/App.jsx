@@ -52,6 +52,7 @@ async function PostGuide(event) {
     });
 }
 
+//Display detailedGuide string to the displayGuide div
 function DisplayGuide(detailedGuide) {
     let targetElement = $("guideDisplay");
     let targetText = $("guideText");
@@ -79,12 +80,6 @@ function App() {
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
         //Else display main page content
         : <table className="bg-transparent text-dark table table-striped" aria-labelledby="tabelLabel">
-                <thead>
-                    <tr>
-                        <th>Information</th>
-                        <th>Brief Summary</th>
-                    </tr>
-                </thead>
                 <tbody>
                     {guides.map(guide =>
                         //Map each part of the guide to a section

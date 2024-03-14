@@ -85,12 +85,12 @@ function App() {
                     {guides.map(guide =>
                         //Map each part of the guide to a section
                         <tr key={guide.id}>
-                            <td>
+                            <td className="col-3">
                                 Author: {guide.author} <br></br>
                                 Programming Language: {guide.programmingLanguage} <br></br>
                                 Language: {guide.language}
                             </td>
-                            <td>
+                            <td className="col-9">
                                 {guide.briefSummary} <br></br>
                                 <button onClick={function () { DisplayGuide(guide.detailedGuide) }}>Show Full Guide</button>
                             </td>
@@ -107,8 +107,8 @@ function App() {
 
             {/*Buttons and Search Bar*/}
             <div>
-                <button data-bs-toggle="collapse" data-bs-target="#addGuide">Add Guide</button>
-                <button data-bs-toggle="collapse" data-bs-target="#searchFilter">Filters</button>
+                <button className="col-6" data-bs-toggle="collapse" data-bs-target="#addGuide">Add Guide</button>
+                <button className="col-6" data-bs-toggle="collapse" data-bs-target="#searchFilter">Filters</button>
             </div>
             <br></br>
 
